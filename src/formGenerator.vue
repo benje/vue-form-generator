@@ -77,6 +77,7 @@ div.vue-form-generator(v-if='schema != null')
 						validateAfterChanged: false,
 						validationErrorClass: "error",
 						validationSuccessClass: "",
+						useSkeletonCssMarkup: false,
 					};
 				}
 			},
@@ -208,6 +209,14 @@ div.vue-form-generator(v-if='schema != null')
 					relevantType = field.inputType;
 				} else {
 					relevantType = field.type;
+				}
+
+				// if options.useSkeletonCssMarkup set then don't show outer label
+				// radio + checkbox components render their own labels
+				if (relevantType === "checkbox" || relevantType === "radio" || relevantType === "checkboxSkel") {
+					if (this.options.useSkeletonCssMarkup === true) {
+						return false;
+					}
 				}
 
 				switch (relevantType) {
@@ -345,7 +354,7 @@ div.vue-form-generator(v-if='schema != null')
 			getFieldID(schema) {
 				const idPrefix = this.options && this.options.fieldIdPrefix ? this.options.fieldIdPrefix : "";
 				return slugifyFormID(schema, idPrefix);
-			}			
+			}
 		}
 	};
 
