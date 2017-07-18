@@ -43,6 +43,7 @@ module.exports = {
 			help: "First name of user",
 			placeholder: "User's first name",
 			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 			validator: validators.string,
 			onChanged(model, newVal, oldVal, field) {
 				console.log(`Model's name changed from ${oldVal} to ${newVal}. Model:`, model);
@@ -60,6 +61,7 @@ module.exports = {
 			required: true,
 			placeholder: "User's last name",
 			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 			validator: validators.string
 		}, {
 			type: "input",
@@ -75,7 +77,8 @@ module.exports = {
 			label: "Telephone",
 			model: "phone",
 			placeholder: "Enter your phone number",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 		}, {
 			type: "input",
 			inputType: "password",
@@ -86,7 +89,8 @@ module.exports = {
 			required: true,
 			hint: "Minimum 6 characters",
 			styleClasses: "half-width",
-			validator: validators.string.locale({ 
+			inputStyleClasses: "u-full-width",
+			validator: validators.string.locale({
 				fieldIsRequired: "The password is required!",
 				textTooSmall: "Password must be at least {1} characters!"
 			})
@@ -95,7 +99,8 @@ module.exports = {
 			inputType: "date",
 			label: "Date",
 			model: "dob",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 			//format: "YYYY.MM.DD HH:mm:ss"
 		}, {
 			type: "input",
@@ -133,7 +138,8 @@ module.exports = {
 			inputType: "number",
 			label: "Number",
 			model: "age",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 			//validator: validators.number
 		}, {
 			type: "input",
@@ -150,24 +156,27 @@ module.exports = {
 			model: "color",
 			styleClasses: "half-width"
 		}, {
-			type: "input",
-			inputType: "checkbox",
+			type: "checkboxSkel",
+			inputType: "skelly",
 			label: "Checkbox (show useless)",
 			model: "checkbox",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 		}, {
 			type: "input",
 			inputType: "search",
 			label: "Search USELESS",
 			model: "search",
 			placeholder: "Entrez un mot-clef",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 		}, {
 			type: "input",
 			inputType: "radio",
 			label: "radio USELESS",
 			model: "radio",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 		}, {
 			type: "input",
 			inputType: "file",
@@ -190,13 +199,15 @@ module.exports = {
 			inputType: "reset",
 			label: "Reset USELESS",
 			model: "reset",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 		}, {
 			type: "input",
 			inputType: "submit",
 			label: "Submit USELESS",
 			model: "submit",
-			styleClasses: "half-width"
+			styleClasses: "half-width",
+			inputStyleClasses: "u-full-width",
 		},
 
 		/**************/
@@ -208,7 +219,8 @@ module.exports = {
 			inputType: "hidden",
 			label: "--- BUILD IN ---",
 			model: "",
-			styleClasses: "alert alert-info"
+			styleClasses: "alert alert-info",
+			inputStyleClasses: "u-full-width",
 		}, {
             type: "checklist",
             label: "CHECKLIST combobox",
@@ -264,7 +276,7 @@ module.exports = {
                 value: "VueJS-123"
             }],
         }, {
-			type: "radios",
+			type: "radioSkel",
 			label: "RADIOS",
 			model: "radios",
 			values: [{
@@ -292,7 +304,8 @@ module.exports = {
 			radiosOptions: {
 				value: "value",
 				name: "name"
-			}
+			},
+			inputStyleClasses: "u-full-width"
 		}, {
 			type: "radios",
 			label: "RADIOS2",
@@ -323,7 +336,8 @@ module.exports = {
 			max: 500,
 			placeholder: "User's biography",
 			rows: 4,
-			validator: validators.string
+			validator: validators.string,
+			inputStyleClasses: "u-full-width",
 		}, {
 			type: "input",
 			inputType: "text",
@@ -442,7 +456,8 @@ module.exports = {
 				id: "business",
 				name: "Business"
 			}],
-			default: "personal"
+			default: "personal",
+			inputStyleClasses: "u-full-width",
 		},
 
 
@@ -888,7 +903,7 @@ module.exports = {
 		// 	styleClasses: "half-width",
 		// 	validator: validators.string
 		// },
-		// {	
+		// {
 		// 		type: "text",
 		// 		label: "Username",
 		// 		model: "userName",
@@ -898,7 +913,7 @@ module.exports = {
 		// 		placeholder: "User's last name",
 		// 		styleClasses: ["half-width", "first"],
 		// 		validator: validators.string
-		// 	}, 
+		// 	},
 		// {
 		// 		type: "text",
 		// 		label: "Company name",
@@ -907,7 +922,7 @@ module.exports = {
 		// 		visible(model) {
 		// 			return model && model.type == "business";
 		// 		}
-		// 	}, 
+		// 	},
 		// 	{
 		// 		type: "text",
 		// 		label: "Company phone",
@@ -920,13 +935,13 @@ module.exports = {
 		// 		visible(model) {
 		// 			return model && model.type == "business";
 		// 		}
-		// 	}, 
+		// 	},
 		// 	{
 		// 		type: "email",
 		// 		label: "E-mail (email field)",
 		// 		model: "email",
 		// 		placeholder: "User's e-mail address"
-		// 	},  
+		// 	},
 		// 	{
 		// 		type: "text",
 		// 		label: "Phone",
@@ -937,7 +952,7 @@ module.exports = {
 		// 		help: "You can use any <b>formatted</b> texts. Or place a <a target='_blank' href='https://github.com/icebob/vue-form-generator'>link</a> to another site.",
 		// 		styleClasses: "half-width"
 		// 			//validator: validators.regexp
-		// 	}, 
+		// 	},
 		// 	{
 		// 		type: "color",
 		// 		label: "Color (basic)",
@@ -947,7 +962,7 @@ module.exports = {
 		// 			//preferredFormat: "rgb"
 		// 		},
 		// 		validator: validators.required
-		// 	}, 
+		// 	},
 		// 	{
 		// 		type: "number",
 		// 		label: "Age (number field)",
@@ -962,7 +977,7 @@ module.exports = {
 		// 			validators.integer,
 		// 			validators.number
 		// 		]
-		// 	}, 
+		// 	},
 		// 	{
 		// 		type: "text",
 		// 		label: "City",
@@ -1025,7 +1040,7 @@ module.exports = {
 		// 				};
 		// 			}
 		// 		}]
-		// 	}, 
+		// 	},
 
 	]
 };
