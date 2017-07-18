@@ -167,7 +167,18 @@ export default {
 		getFieldID(schema) {
 			const idPrefix = this.formOptions && this.formOptions.fieldIdPrefix ? this.formOptions.fieldIdPrefix : "";
 			return slugifyFormID(schema, idPrefix);
-		}
+		},
 
+		// Get style classes for actual field input
+		getClassForFieldInput(schema) {
+			let baseClasses = {};
+			if (isArray(schema.inputStyleClasses)) {
+				each(schema.inputStyleClasses, (c) => baseClasses[c] = true);
+			}
+			else if (isString(schema.inputStyleClasses)) {
+				baseClasses[schema.inputStyleClasses] = true;
+			}
+			return baseClasses;
+		}
 	}
 };

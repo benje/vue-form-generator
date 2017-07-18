@@ -1,5 +1,5 @@
 <template lang="pug">
-	select.form-control(v-model="value", :disabled="disabled", :name="schema.inputName", :id="getFieldID(schema)")
+	select.form-control(v-model="value", :disabled="disabled", :name="schema.inputName", :id="getFieldID(schema)", :class="getClassForFieldInput(schema)")
 		option(v-if="!selectOptions.hideNoneSelectedText", :disabled="schema.required", :value="null", :selected="value == undefined") {{ selectOptions.noneSelectedText || "&lt;Nothing selected&gt;" }}
 		option(v-for="item in items", :value="getItemValue(item)") {{ getItemName(item) }}
 </template>
@@ -7,7 +7,7 @@
 <script>
 	import {isObject} from "lodash";
 	import abstractField from "../abstractField";
-	
+
 	export default {
 		mixins: [ abstractField ],
 
@@ -22,7 +22,7 @@
 					return values.apply(this, [this.model, this.schema]);
 				} else
 					return values;
-			}      
+			}
 		},
 
 		methods: {

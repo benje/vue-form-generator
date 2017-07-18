@@ -2,6 +2,7 @@
 .wrapper
 	input.form-control(
 		:id="getFieldID(schema)",
+		:class="getClassForFieldInput(schema)",
 		:type="schema.inputType",
 		:value="value",
 		@input="value = $event.target.value",
@@ -48,7 +49,7 @@
 					this.value = event.target.files;
 				}
 			},
-			
+
 			formatValueToField(value) {
 				if (value != null) {
 					let dt;
@@ -64,7 +65,7 @@
 						return fecha.format(dt, "YYYY-MM-DDTHH:mm:ss");
 					}
 				}
-				
+
 				return value;
 			},
 
@@ -100,7 +101,7 @@
 						}
 						break;
 					case "number":
-						return Number(value);					
+						return Number(value);
 					case "range":
 						return Number(value);
 					}
